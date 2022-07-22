@@ -1,0 +1,78 @@
+<div class="item-form">
+<form [formGroup]="form" (ngSubmit)="onSubmitItemForm()">
+    <div class="form-group">
+        <!--<label for="ldesc">LongDesc</label><br/>-->
+        <input  type="text" class="form-control" placeholder="Long Desc" formControlName="longDesc" 
+        [(ngModel)]="item.longDesc" [ngClass]="{'is-invalid': submitted && f['longDesc'].errors}">
+        <div *ngIf="submitted && f['longDesc'].errors" class="invalid-feedback">
+            <div *ngIf="f['longDesc'].errors['required']">Long desc is required.</div>
+            <div *ngIf="f['longDesc'].errors['minlength']">
+                Long desc must be at least 2 characters
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label for="sdesc">ShortDesc</label><br/>-->
+        <input  type="text" class="form-control" placeholder="Short Desc" formControlName="shortDesc" 
+        [(ngModel)]="item.shortDesc" [ngClass]="{'is-invalid': submitted && f['shortDesc'].errors}">
+        <div *ngIf="submitted && f['shortDesc'].errors" class="invalid-feedback">
+            <div *ngIf="f['shortDesc'].errors['required']">Short desc is required.</div>
+            <div *ngIf="f['shortDesc'].errors['minlength']">
+                Short desc must be at least 2 characters
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label for="unit">Unit</label><br/>-->
+        <!-- <input class="form-control" placeholder="Unit" type="text" name="Unit" id="unit" [(ngModel)]="item.unit" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div> -->
+        <select class="custom-select mb-3"
+          (change)="changeItem($event)"
+          formControlName="unit" [(ngModel)]="item.unit">                
+          <option *ngFor="let unit of units" [ngValue]="unit">
+            {{ unit }}
+          </option>
+        </select>
+        <!-- error block -->
+        <div class="invalid-feedback" *ngIf="submitted && unitName?.invalid">
+          <sup>*</sup>Please provide unit
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label for="category">Category</label><br/>-->
+        <!--<input class="form-control" placeholder="Category" type="text" name="Category" id="category" [(ngModel)]="item.category" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>-->
+        <input  type="text" class="form-control" placeholder="" formControlName="category"
+        [(ngModel)]="item.category" [ngClass]="{'is-invalid': submitted && f['category'].errors}">
+        <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+            <div *ngIf="f['category'].errors['required']">Category is required.</div>            
+        </div>
+
+    </div>
+    <!--
+    <div class="form-group">                  
+        <input type="checkbox" name="IsActive" id="isactive" [(ngModel)]="item.isActive"> &nbsp;
+        <label for="isactive">Online</label>
+    </div>
+    -->
+    <div class="form-group form-check">
+        <input type="checkbox"
+          formControlName="isActive"
+          class="form-check-input"
+          [(ngModel)]="item.isActive"          
+        />
+        <label for="isActive" class="form-check-label">Online</label>        
+      </div>
+
+    <div class="form-group">
+        <div class="item-form-action">
+        <button type="submit" class="btn bg-info">Save</button> &nbsp;
+        <a class="new-item" (click) = "clearItemForm()">New Item</a>                
+        </div>
+    </div>
+
+    </form>
+
+</div>

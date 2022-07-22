@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-sm-3 left-panel">
+      <br/>
+      <form #form="ngForm" (ngSubmit)="onSubmitProductForm()" class="was-validated">
+        <div class="form-group">
+          <!--<label for="ldesc">LongDesc</label><br/>-->
+          <input class="form-control" placeholder="Long Desc" type="text" name="LongDesc" id="ldesc" [(ngModel)]="product.longDesc" required>              
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+          <!--<label for="sdesc">ShortDesc</label><br/>-->
+          <input class="form-control" placeholder="Short Desc" type="text" name="ShortDesc" id="sdesc" [(ngModel)]="product.shortDesc" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+          <!--<label for="weightValue">Weight</label><br/>-->
+          <input class="form-control" placeholder="Weight" name="weightv" type="number" step="0.1" id="weightv" [(ngModel)]="product.weightValue" required>          
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please enter a number.</div>
+        </div>
+        <div class="form-group">
+          <!--<label for="weightUnit">Unit</label><br/>-->
+          <input class="form-control" onkeyup="this.value = this.value.toUpperCase();" placeholder="Unit" type="text" name="weightu" id="weightu" [(ngModel)]="product.weightUnit" required>          
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please enter a number.</div>
+        </div>
+        <div class="form-group">
+          <!--<label for="category">Category</label><br/>-->
+          <input type="text" name="Category" id="category" [(ngModel)]="product.category" disabled="true">
+        </div>
+        <div class="form-group">              
+          <input type="checkbox" name="IsActive" id="isactive" [(ngModel)]="product.isActive"> &nbsp;
+          <label for="isactive">Online</label>
+        </div>
+        <div class="form-group">  
+                      
+          <div class="productitem-button" *ngFor="let productitem of product.productItems">                
+            {{productitem.itemInvolved.longDesc }} 
+            <span class="badge badge-light"> x{{productitem.qty}}</span><br/>
+            <span class="icon icon-plus" (click)="addProductItemAmount(productitem)"><i class="fa-solid fa-circle-plus"></i></span>
+            <span class="icon icon-minus" (click)="minusProductItemAmount(productitem)"><i class="fa-solid fa-circle-minus"></i></span>
+            <span class="icon icon-trashcan" (click)="removeProductItem(productitem)"><i class="fa-solid fa-trash-can"></i></span>
+         </div>  
+
+         <div class="productitem-category divScrollBar">
+            <div *ngFor="let newItem of productItems" (click)="addNewProductItem(newItem)">                    
+                <i class="fa-solid fa-circle-plus"></i>
+                {{newItem.longDesc}}                                        
+            </div>
+          </div>
+
+          <div class="dropup">
+            <button type="button" class="btn btn-primary dropdown-toggle" 
+            data-toggle="dropdown">
+              {{currentProductItemCate}} Items 
+            </button>
+            <!--<div (click)="deleteProductItems(product.id)">test delete productItem</div>-->
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" *ngFor="let cateId of itemCategories" (click)="getProductItems(cateId)">{{cateId}}</a>                    
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+          <div class="product-form-action">
+            <button type="submit" class="btn bg-info">Save</button> &nbsp;
+            <a class="new-Product" (click) = "clearProductForm()">New Product</a>                
+          </div>
+        </div>
+
+      </form>
+      
+    </div>
+
+    <div class="col-sm-9 right-panel">
+      <br/>
+
+      <input class="form-control searchBox" id="searchBox_products" type="text" placeholder="Search product...">
+
+      <table class="table table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>LongDesc</th>
+            <th>ShortDesc</th>
+            <th>Weight</th> 
+            <th>Items</th>               
+            <th>Online</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="searchTable_products">
+          <tr class="products-table-row" *ngFor="let product of products">
+            <td (click)="populateProductForm(product)">{{ product.longDesc }}</td>
+            <td (click)="populateProductForm(product)">{{ product.shortDesc }}</td>
+            <td (click)="populateProductForm(product)">{{ product.weightValue + '' + product.weightUnit }}</td>
+            <td (click)="populateProductForm(product)" width="150px">
+              <span class="badge badge-warning" *ngFor="let productitem of product.productItems">
+                  {{productitem.itemInvolved.shortDesc}} 
+                  <span class="badge badge-pill badge-secondary">x{{productitem.qty}}</span>
+              </span>
+            </td>
+            <td (click)="populateProductForm(product)"><input type="checkbox" [(ngModel)]="product.isActive" disabled></td>      
+            <td><a (click)="deleteProduct(product.id)"><i class="fa-solid fa-trash-can"></i></a></td>    
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>

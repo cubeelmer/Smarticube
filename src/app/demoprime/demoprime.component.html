@@ -1,0 +1,35 @@
+<br/>
+<div class="row-prime-conditionpanel">
+    <form #form="ngForm" (ngSubmit)="onSubmitConditionForm()" >
+         <div class="form-group-prime">
+            <label for="fNum">Number: </label>
+            <input class="form-control" placeholder="From" type="number" 
+            name="FromNumber" id="fNum" [(ngModel)]="fNum" (ngModelChange)="validExecution()">
+            <label for="tNum"> ~ </label>
+            <input class="form-control" placeholder="To" type="number" 
+            name="toNumber" id="tNum" [(ngModel)]="tNum" (ngModelChange)="validExecution()">
+            &nbsp;&nbsp;
+            <button type="submit" class="btn bg-info" id="btnSubmit">Proceed</button>
+          </div>
+    </form>
+</div>
+
+<div>
+    <div>** Maximum number {{maxNum}} **</div>
+    <div class="divTableViewCaption">[{{fNum}} - {{tNum}}] Total <span class="primeValue">Prime</span> numbers is {{countPrime}}</div>
+    
+        
+    <!--
+    <div *ngFor="let prime of primeNumbers.result">
+        {{prime}}
+    </div>
+
+    <div>{{countPrime}}</div>
+    -->
+
+    <div id="divTableView"></div>
+
+    
+    
+</div>
+<br/><br/>

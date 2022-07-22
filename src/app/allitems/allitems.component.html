@@ -1,0 +1,98 @@
+<div class="row">
+        <div class="col-sm-3 left-panel">
+                
+            <br/>
+            <form #form="ngForm" (ngSubmit)="onSubmitItemForm()" class="was-validated">
+            <div class="form-group">
+                <!--<label for="ldesc">LongDesc</label><br/>-->
+                <input class="form-control" placeholder="Long Desc" type="text" name="LongDesc" id="ldesc" [(ngModel)]="item.longDesc" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <!--<label for="sdesc">ShortDesc</label><br/>-->
+                <input class="form-control" placeholder="Short Desc" type="text" name="ShortDesc" id="sdesc" [(ngModel)]="item.shortDesc" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <!--<label for="unit">Unit</label><br/>-->
+                <input class="form-control" onkeyup="this.value = this.value.toUpperCase();" placeholder="Unit" type="text" name="Unit" id="unit" [(ngModel)]="item.unit" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <!--<label for="category">Category</label><br/>-->
+                <input class="form-control" placeholder="Category" type="text" name="Category" id="category" [(ngModel)]="item.category" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">                  
+                <input type="checkbox" name="IsActive" id="isactive" [(ngModel)]="item.isActive"> &nbsp;
+                <label for="isactive">Online</label>
+            </div>
+
+            <div class="form-group">
+                <div class="item-form-action">
+                <button type="submit" class="btn bg-info">Save</button> &nbsp;
+                <a class="new-item" (click) = "clearItemForm()">New Item</a>                
+                </div>
+            </div>
+
+            </form>
+
+
+
+        </div>
+
+        <div class="col-sm-9 right-panel">
+            <br/>
+
+            <div class="btn-group">
+            <button type="button" class="btn btn-info" (click)="refreshItemsList(cateId)" *ngFor="let cateId of itemCategories" >{{ cateId }}</button>    
+            </div>
+
+            <input class="form-control searchBox" id="searchBox_items" type="text" placeholder="Search item..">
+
+            <table class="table table-striped table-sm">
+            <thead class="thead-dark">
+                <tr>
+                <th>LongDesc</th>
+                <th>ShortDesc</th>
+                <th>Unit</th>
+                <th>Online</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody id="searchTable_items">
+                <tr class="items-table-row" *ngFor="let item of items">
+                <td (click)="populateItemForm(item)">{{ item.longDesc }}</td>
+                <td (click)="populateItemForm(item)">{{ item.shortDesc }}</td>
+                <td (click)="populateItemForm(item)">{{ item.unit }}</td>
+                <td (click)="populateItemForm(item)"><input type="checkbox" [(ngModel)]="item.isActive" disabled></td>                      
+                <td><a (click)="deleteItem(item.id)"><i class="fa-solid fa-trash-can"></i></a></td>    
+                </tr>
+            </tbody>
+            </table>
+        
+            <!--
+            <br/>
+            <app-itemform></app-itemform>
+            -->
+        </div>
+        <!--
+        <div class="item-component-container">
+            <div class="item-component-more-items">
+              
+              <app-item *ngFor="let item of items">
+                <h4 class="title">{{ item.shortDesc}}</h4>
+                <p class="summary">{{item.longDesc}}</p>
+                <button class="btn btn-more item-component-btn">Show More</button>
+              </app-item>                                                    
+
+            </div>
+          
+          </div>
+          -->
+</div>
+

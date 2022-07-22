@@ -1,0 +1,85 @@
+.products-table-row{
+    cursor:pointer;
+}
+
+.products-table-row:hover{
+    background-color: yellow;
+}
+
+.productitem-button {
+    text-align: left;
+    background-color: blueviolet;
+    color: white;
+    margin: 2px;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.productitem-plus {
+    cursor:pointer;
+    font-size: 12px;
+}
+
+.productitem-plus:hover {
+    cursor:pointer;
+    background-color: aqua;
+}
+
+.productitem-button .icon {
+    margin: 2px;
+}
+
+.productitem-button .icon-plus {
+    color: gold;        
+}
+
+.productitem-button .icon-minus {
+    color:chartreuse;      
+}
+
+.productitem-button .icon-trashcan {
+    color:red;        
+}
+
+.productitem-category{
+    border: solid gray 1px;
+    border-radius: 5px;
+
+}
+
+.productitem-category div {
+    font-size: 12px;
+    font-weight: bold;
+    cursor:pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.productitem-category div:hover {
+    color: gold;
+    background-color:darkgray;
+    
+}
+
+.divScrollBar{
+  height:120px;
+  overflow-y: scroll;
+}
+
+
+.dropup button {
+    font-size: 14px;
+    margin: 2px;
+}
+
+.searchBox {
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+
+.badge{
+    margin-right: 1px;
+}

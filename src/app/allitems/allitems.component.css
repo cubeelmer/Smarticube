@@ -1,0 +1,28 @@
+.items-table-row{
+    cursor:pointer;
+}
+
+.items-table-row:hover{
+    background-color: yellow;
+}
+
+
+
+.item-component-container{
+    padding:20px 30px;
+    /*background-color: #eee;*/
+    background-color: firebrick;
+}
+
+
+.item-component-more-items{
+    display: flex;
+}
+
+.item-component-btn{
+    min-width: 160px;
+    margin-top: 10px;
+    padding:10px 0px;
+    background-color: #4CAF50;
+    border: none;
+}

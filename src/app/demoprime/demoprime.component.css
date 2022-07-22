@@ -1,0 +1,57 @@
+#divTableView{
+    width: 100%;    
+}
+
+.divTableViewCaption{
+    font-size: 25px;
+    font-weight: bold;
+    background-color: azure;
+}
+
+
+.tableView{
+    width: 100%;
+    border: 5px solid white;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.tableView td{
+    border: 1px solid white;    
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+.primeBadge {
+    background-color: aquamarine;
+    display: block;
+    text-align: center;    
+}
+
+.primeValue{
+    color: yellowgreen;
+}
+
+.row-prime-conditionpanel{ 
+    background-color: darkgrey;
+}
+
+.form-group-prime{
+    display: flex;
+  justify-content: space-between;  
+
+}
+
+.form-group-prime label, input, button {
+    font-size: 25px;
+    font-weight: bold;    
+}
+
+.form-group-prime input{
+    width: 50%;
+}
+
+
+
